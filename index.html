@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>朱栎芝 - 个人网站 | Personal Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body style="overflow: hidden;">
+
+  <!-- 自定义鼠标光标 -->
+  <div class="custom-cursor"></div>
+  <div class="cursor-glow"></div>
+
+  <!-- 导航栏 -->
+  <nav class="navbar" id="navbar" style="background: transparent !important;">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" style="color: white !important; font-weight: bold !important;">Welcome to My World</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link active" style="color: white !important; font-weight: bold !important;">首页 / Home</a></li>
+        <li><a href="experience.html" class="nav-link" style="color: white !important; font-weight: bold !important;">经历 / Experience</a></li>
+        <li><a href="projects.html" class="nav-link" style="color: white !important; font-weight: bold !important;">项目 / Projects</a></li>
+        <li><a href="interests.html" class="nav-link" style="color: white !important; font-weight: bold !important;">兴趣 / Interests</a></li>
+        <li><a href="contact.html" class="nav-link" style="color: white !important; font-weight: bold !important;">联系 / Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn" style="color: white !important;">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero区域 -->
+  <section class="hero" style="height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 8rem 0; overflow: hidden;">
+    
+    <!-- 背景图片轮播 -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
+      <div style="width: 100%; height: 100%; position: relative;">
+        <div class="bg-slider" style="width: 100%; height: 100%; position: relative;">
+          <div class="bg-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('img/first_flower.jpg') center/cover no-repeat; opacity: 1; transition: opacity 1s ease;"></div>
+          <div class="bg-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('img/first_forest.jpg') center/cover no-repeat; opacity: 0; transition: opacity 1s ease;"></div>
+          <div class="bg-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('img/first_mount.jpg') center/cover no-repeat; opacity: 0; transition: opacity 1s ease;"></div>
+          <div class="bg-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('img/first_leaf.jpg') center/cover no-repeat; opacity: 0; transition: opacity 1s ease;"></div>
+          <div class="bg-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('img/first_tennis.jpg') center/cover no-repeat; opacity: 0; transition: opacity 1s ease;"></div>
+          <div class="bg-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('img/first_paint.jpg') center/cover no-repeat; opacity: 0; transition: opacity 1s ease;"></div>
+        </div>
+        <!-- 黑色半透明蒙版 -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5);"></div>
+      </div>
+    </div>
+    
+    <!-- 粒子背景容器 -->
+    <div class="particles-container" id="particles"></div>
+    
+    <div class="container" style="position: relative; z-index: 1; text-align: center;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem; margin-top: 140px;">
+        
+        <!-- 头像区域 -->
+        <div class="scroll-animate" style="animation-delay: 0.2s;">
+          <div style="width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); padding: 5px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
+            <div style="width: 100%; height: 100%; border-radius: 50%; background: var(--color-white); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="img/avatar.jpg" alt="朱栎芝头像" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+          </div>
+        </div>
+
+        <!-- 标题 - 打字机效果 -->
+        <div class="scroll-animate" style="animation-delay: 0.4s;">
+          <h1 style="font-size: 3rem; margin-bottom: 0.5rem; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); color: white !important; font-weight: bold !important; background: transparent !important;">
+            <span class="typewriter" id="typewriter" style="color: white !important; font-weight: bold !important; background: transparent !important;">你好，我是朱栎芝</span>
+          </h1>
+          <p style="font-size: 1.2rem; opacity: 0.9; text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); color: white !important; font-weight: bold !important; background: transparent !important;"> 中南财经政法大学 / 信息管理与信息系统（IM）</p>
+        </div>
+
+        <!-- 简短介绍 -->
+        <div class="scroll-animate" style="animation-delay: 0.6s; max-width: 600px;">
+          <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.95; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); color: white !important; font-weight: bold !important; background: transparent !important;">
+            产品与数据的探索者，用数据解构需求，以产品创造价值。<br>
+             An explorer in product and data, deconstructing needs with data, creating value through products.
+          </p>
+        </div>
+
+        <!-- 按钮组 -->
+        <div class="scroll-animate" style="animation-delay: 0.8s; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+          <a href="about.html" class="btn btn-primary">查看技能 / Skills</a>
+          <a href="contact.html" class="btn btn-secondary">联系我 / Contact</a>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <p style="margin-bottom: 1rem;">© 2026 朱栎芝 · All Rights Reserved</p>
+      <p style="font-size: 0.9rem;">用 ❤️ 制作</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/interactions.js"></script>
+</body>
+</html>

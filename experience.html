@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>经历 - 朱栎芝 | Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    /* 学生工作按钮渐变色动画 */
+    .detail-btn {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .detail-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+      transition: opacity 0.4s ease;
+      opacity: 0;
+      z-index: 0;
+    }
+    
+    .detail-btn span {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .detail-btn:hover::before {
+      opacity: 1;
+    }
+    
+    /* 志愿经历布局 */
+    .volunteer-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: start;
+      overflow: hidden;
+    }
+    
+    @media (max-width: 900px) {
+      .volunteer-section {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* 志愿经历照片墙 */
+    .volunteer-photo-wall {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 70px;
+      gap: 10px;
+      max-height: 750px;
+      overflow: hidden;
+    }
+    
+    .volunteer-photo-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .volunteer-photo-item:hover {
+      transform: scale(1.02);
+    }
+    
+    .volunteer-photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* 不同尺寸 - 移除严格aspect-ratio */
+    .volunteer-photo-item.small {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .volunteer-photo-item.medium {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .volunteer-photo-item.large {
+      grid-column: span 4;
+      grid-row: span 3;
+    }
+    
+    /* 翻转卡片 */
+    .volunteer-photo-item.flip-card {
+      perspective: 1000px;
+    }
+    
+    .volunteer-flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+    
+    .volunteer-photo-item.flip-card:hover .volunteer-flip-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .volunteer-flip-front,
+    .volunteer-flip-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .volunteer-flip-front {
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      text-align: center;
+    }
+    
+    .volunteer-flip-front h4 {
+      color: white;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .volunteer-flip-front p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+    }
+    
+    .volunteer-flip-back {
+      transform: rotateY(180deg);
+    }
+    
+    /* 照片占位符 */
+    .volunteer-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #EAEAEA, #F5F3F0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #7A706A;
+    }
+    
+    .volunteer-photo-placeholder .icon {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .volunteer-photo-placeholder .text {
+      font-size: 0.85rem;
+    }
+    
+    /* 志愿经历文字描述 */
+    .volunteer-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .volunteer-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .volunteer-stat-card {
+      background: linear-gradient(135deg, rgba(143, 185, 168, 0.1), rgba(242, 196, 206, 0.1));
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+    
+    .volunteer-stat-card .number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.3rem;
+    }
+    
+    .volunteer-stat-card .label {
+      font-size: 0.95rem;
+      color: var(--color-text);
+      opacity: 0.8;
+    }
+    
+    .volunteer-detail {
+      line-height: 1.8;
+      color: var(--color-text);
+    }
+    
+    .volunteer-detail h4 {
+      color: var(--color-secondary);
+      margin: 1.5rem 0 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .volunteer-detail h4:first-child {
+      margin-top: 0;
+    }
+    
+    .volunteer-detail ul {
+      padding-left: 1.5rem;
+    }
+    
+    .volunteer-detail li {
+      margin-bottom: 0.5rem;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 自定义鼠标光标 -->
+  <div class="custom-cursor"></div>
+  <div class="cursor-glow"></div>
+
+  <!-- 导航栏 -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">朱栎芝</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">首页 / Home</a></li>
+        <li><a href="experience.html" class="nav-link active">经历 / Experience</a></li>
+        <li><a href="projects.html" class="nav-link">项目 / Projects</a></li>
+        <li><a href="interests.html" class="nav-link">兴趣 / Interests</a></li>
+        <li><a href="contact.html" class="nav-link">联系 / Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- 页面内容开始 -->
+  <div style="padding-top: 8rem;"></div>
+
+  <!-- 实习隐私提示 -->
+  <section style="padding: 0 0 3rem;">
+    <div class="container">
+      <div class="scroll-animate">
+        <div style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%); padding: 1.5rem 2rem; border-radius: 20px; text-align: center; color: var(--color-text);">
+          <p style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 1.05rem;">
+            <span style="font-size: 1.5rem;">ℹ️</span>
+            为保护实习公司隐私，实习经历已在网申和简历中填写
+          </p>
+          <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.3rem;">
+            To protect internship company privacy, internship experience is provided in job applications
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 教育经历 - 照片墙布局 -->
+  <section style="padding: 3rem 0;">
+    <div style="max-width: 100%; margin: 0 auto; padding: 0 2rem;">
+      <div class="section-title scroll-animate">
+        <h2>教育经历 / Education</h2>
+        <p>求学之路 / Academic Journey</p>
+      </div>
+
+      <div class="education-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: stretch;">
+
+        <!-- 左边3D立方体轮播 -->
+        <div class="scroll-animate" style="animation-delay: 0.2s; position: relative;">
+          <div style="perspective: 1000px; width: 100%; height: 100%; min-height: 500px; display: flex; align-items: center; justify-content: center;">
+            <div id="cube-container" style="width: 100%; max-width: 400px; height: 400px; position: relative; transform-style: preserve-3d; transition: transform 0.6s ease-in-out;">
+              <!-- 立方体的6个面 -->
+              <div style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); transform: translateZ(200px);">
+                <img src="img/school_snow4.jpg" alt="校园建筑" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); transform: rotateY(90deg) translateZ(200px);">
+                <img src="img/school_snow.jpg" alt="图书馆" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); transform: rotateY(180deg) translateZ(200px);">
+                <img src="img/school_snow2.jpg" alt="教室" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); transform: rotateY(-90deg) translateZ(200px);">
+                <img src="img/school_classroom.jpg" alt="校园风景" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              
+            </div>
+          </div>
+          <!-- 轮播控制按钮 - 更靠近轮播图边缘 -->
+          <button id="prev-btn" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.7); border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; color: var(--color-text); cursor: none; z-index: 5;">‹</button>
+          <button id="next-btn" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.7); border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; color: var(--color-text); cursor: none; z-index: 5;">›</button>
+        </div>
+
+        <!-- 右边文字描述 - 减小宽度，增加高度 -->
+        <div class="scroll-animate" style="animation-delay: 0.4s; display: flex;">
+          <div class="card" style="width: 85%; margin: 0 auto; min-height: 500px; display: flex; flex-direction: column; justify-content: center;">
+            <p style="color: var(--color-primary); font-weight: 600; margin-bottom: 0.5rem;">2023.09 - 2027.06</p>
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem;">中南财经政法大学</h3>
+            <p style="font-weight: 500; opacity: 0.9; margin-bottom: 1.5rem;">信息管理与信息系统 / 211</p>
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <div style="display: flex; gap: 1rem;">
+                <div style="width: 24px; height: 24px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.9rem; color: white;">📚</div>
+                <div>
+                  <p style="font-weight: 500; margin-bottom: 0.3rem;">主修课程</p>
+                  <p style="font-size: 0.95rem; opacity: 0.8;">管理信息系统、Python机器学习、Java程序设计、数据库系统等</p>
+                </div>
+              </div>
+              <div style="display: flex; gap: 1rem;">
+                <div style="width: 24px; height: 24px; background: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.9rem; color: white;">🏆</div>
+                <div>
+                  <p style="font-weight: 500; margin-bottom: 0.3rem;">荣誉奖项</p>
+                  <p style="font-size: 0.95rem; opacity: 0.8;">成绩排名前7%，多次获得一等奖学金，校级优秀共青团员，校级优秀班干部等荣誉</p>
+                </div>
+              </div>
+              <div style="display: flex; gap: 1rem;">
+                <div style="width: 24px; height: 24px; background: var(--color-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.9rem; color: white;">🎯</div>
+                <div>
+                  <p style="font-weight: 500; margin-bottom: 0.3rem;">校园活动</p>
+                  <p style="font-size: 0.95rem; opacity: 0.8;">曾任非遗社团社长与新生辅导员助理，组织多项校园文化活动</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* 响应式布局 */
+    @media (max-width: 1023px) {
+      .education-container {
+        grid-template-columns: 3fr 2fr;
+        gap: 2rem;
+      }
+      
+      #cube-container {
+        height: 350px !important;
+      }
+      
+      #cube-container > div {
+        transform: translateZ(175px) !important;
+      }
+      
+      #cube-container > div:nth-child(2) {
+        transform: rotateY(90deg) translateZ(175px) !important;
+      }
+      
+      #cube-container > div:nth-child(3) {
+        transform: rotateY(180deg) translateZ(175px) !important;
+      }
+      
+      #cube-container > div:nth-child(4) {
+        transform: rotateY(-90deg) translateZ(175px) !important;
+      }
+      
+      #cube-container > div:nth-child(5) {
+        transform: rotateX(90deg) translateZ(175px) !important;
+      }
+      
+      #cube-container > div:nth-child(6) {
+        transform: rotateX(-90deg) translateZ(175px) !important;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .education-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      #cube-container {
+        height: 300px !important;
+        max-width: 300px !important;
+        margin: 0 auto;
+      }
+      
+      #cube-container > div {
+        transform: translateZ(150px) !important;
+      }
+      
+      #cube-container > div:nth-child(2) {
+        transform: rotateY(90deg) translateZ(150px) !important;
+      }
+      
+      #cube-container > div:nth-child(3) {
+        transform: rotateY(180deg) translateZ(150px) !important;
+      }
+      
+      #cube-container > div:nth-child(4) {
+        transform: rotateY(-90deg) translateZ(150px) !important;
+      }
+      
+      #cube-container > div:nth-child(5) {
+        transform: rotateX(90deg) translateZ(150px) !important;
+      }
+      
+      #cube-container > div:nth-child(6) {
+        transform: rotateX(-90deg) translateZ(150px) !important;
+      }
+    }
+  </style>
+
+  <!-- 校园经历 -->
+  <section style="padding: 4rem 2rem; background: var(--color-white);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+      <div class="section-title scroll-animate">
+        <h2>校园经历 / Campus</h2>
+        <p>多彩校园 / Colorful Campus Life</p>
+      </div>
+
+      <!-- 学生工作子板块 -->
+      <div style="margin-bottom: 4rem;">
+        <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--color-primary); border-left: 4px solid var(--color-primary); padding-left: 1rem;">学生工作 / Student Work</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+          
+          <!-- 学生工作1 -->
+          <div class="card card-hover scroll-animate" style="animation-delay: 0.2s; display: flex; flex-direction: column;">
+            <div style="width: 100%; height: 200px; border-radius: 12px; margin-bottom: 1.5rem; overflow: hidden;">
+              <img src="img/club/club_first.png" alt="社团" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <p style="color: var(--color-primary); font-weight: 600; margin-bottom: 0.5rem;">"古韵流光"非遗社团 / Cultural Club</p>
+            <h3 style="margin-bottom: 1rem;">社长 / President</h3>
+            <p style="opacity: 0.8; line-height: 1.8; flex: 1;">
+              组织多项校园文化活动，负责社团大型活动策划落地；
+              对接物资供应商，审核活动物料、道具等采买，洽谈服务细节；
+              主动联络校内外赞助方，沟通赞助需求与权益回报，
+              为社团活动筹措经费与物资支持。
+            </p>
+            <a href="club.html" class="detail-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; padding: 0.8rem 1.5rem; background: var(--color-primary); color: white; text-decoration: none; border-radius: 8px; font-weight: 500; transition: all 0.3s ease;">
+              <span>了解详情</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          <!-- 学生工作2 -->
+          <div class="card card-hover scroll-animate" style="animation-delay: 0.4s; display: flex; flex-direction: column;">
+            <div style="width: 100%; height: 200px; border-radius: 12px; margin-bottom: 1.5rem; overflow: hidden;">
+              <img src="img/club/stu_banhui6.jpeg" alt="新生辅导员助理工作" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <p style="color: var(--color-primary); font-weight: 600; margin-bottom: 0.5rem;">学生会 / Student Union</p>
+            <h3 style="margin-bottom: 1rem;">新生辅导员助理 / Student Assistant</h3>
+            <p style="opacity: 0.8; line-height: 1.8; flex: 1;">
+            陪伴超70+位新生迈进中南大，统筹策划新生报到、军训动员、分享会等活动;
+            全面收集新生报到材料，建立并完善班级各类台账；牵头建立军训教官、辅导员与
+            新生之间的沟通桥梁，定期关注新生成长情况。
+            </p>
+            <a href="assistant.html" class="detail-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; padding: 0.8rem 1.5rem; background: var(--color-accent); color: var(--color-text); text-decoration: none; border-radius: 8px; font-weight: 500; transition: all 0.3s ease;">
+              <span>了解详情</span>
+              <span>→</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 志愿服务子板块 -->
+      <div>
+        <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--color-secondary); border-left: 4px solid var(--color-secondary); padding-left: 1rem;">志愿服务 / Volunteer Service</h3>
+        
+        <div class="volunteer-section scroll-animate">
+          <!-- 左侧：照片墙 -->
+          <div class="volunteer-photo-wall">
+            <!-- 翻转卡片1：寒假线上支教 -->
+            <div class="volunteer-photo-item large flip-card">
+              <div class="volunteer-flip-inner">
+                <div class="volunteer-flip-front">
+                  <h4>寒假线上支教</h4>
+                  <p>连续2年参与</p>
+                </div>
+                <div class="volunteer-flip-back">
+                  <img src="img/volunteer/volunteer7.jpg" alt="校志协秘书处成员" onerror="this.parentElement.innerHTML='<div class=\'volunteer-photo-placeholder\'><span class=\'icon\'>WJ01</span><span class=\'text\'>支教现场</span></div>'">
+                </div>
+              </div>
+            </div>
+
+            <!-- 翻转卡片2：校团委 -->
+            <div class="volunteer-photo-item small flip-card">
+              <div class="volunteer-flip-inner">
+                <div class="volunteer-flip-front">
+                  <h4>校团委联合开展活动</h4>
+                  <p>新年盆栽手工</p>
+                </div>
+                <div class="volunteer-flip-back">
+                  <img src="img/volunteer/volunteer8.jpg" alt="与共青团联合开展活动" onerror="this.parentElement.innerHTML='<div class=\'volunteer-photo-placeholder\'><span class=\'icon\'>YM01</span></div>'">
+                </div>
+              </div>
+            </div>
+
+            <!-- 普通照片1：新生迎新 -->
+            <div class="volunteer-photo-item small">
+              <img src="img/volunteer/volunteer4.jpg" alt="新生迎新" onerror="this.parentElement.innerHTML='<div class=\'volunteer-photo-placeholder\'><span class=\'icon\'>DT01</span><span class=\'text\'>地铁引导</span></div>'">
+            </div>
+
+            <!-- 普通照片2：图书馆整理 -->
+            <div class="volunteer-photo-item medium">
+              <img src="img/volunteer/volunteer3.jpg" alt="图书馆整理" onerror="this.parentElement.innerHTML='<div class=\'volunteer-photo-placeholder\'><span class=\'icon\'>TS01</span><span class=\'text\'>图书馆整理</span></div>'">
+            </div>
+
+            <!-- 翻转卡片3：校运会 -->
+            <div class="volunteer-photo-item medium flip-card">
+              <div class="volunteer-flip-inner">
+                <div class="volunteer-flip-front">
+                  <h4>校运会</h4>
+                  <p>赛事志愿服务</p>
+                </div>
+                <div class="volunteer-flip-back">
+                  <img src="img/volunteer/volunteer5.jpg" alt="校运会" onerror="this.parentElement.innerHTML='<div class=\'volunteer-photo-placeholder\'><span class=\'icon\'>XY01</span></div>'">
+                </div>
+              </div>
+            </div>
+
+            <!-- 普通照片3：活动照片 -->
+            <div class="volunteer-photo-item small">
+              <img src="img/volunteer/volunteer1.jpg" alt="活动照片" onerror="this.parentElement.innerHTML='<div class=\'volunteer-photo-placeholder\'><span class=\'icon\'>XJ01</span><span class=\'text\'>荣誉证书</span></div>'">
+            </div>
+
+            <!-- 普通照片4：优秀志愿者 -->
+            <div class="volunteer-photo-item small">
+              <img src="img/volunteer/jiangzhuang.jpg" alt="优秀志愿者" onerror="this.parentElement.innerHTML='<div class=\'volunteer-photo-placeholder\'><span class=\'icon\'>SQ01</span><span class=\'text\'>社区服务</span></div>'">
+            </div>
+          </div>
+
+          <!-- 右侧：文字描述 -->
+          <div class="volunteer-content">
+            <div class="volunteer-stats">
+              <div class="volunteer-stat-card">
+                <div class="number">300+</div>
+                <div class="label">服务时长<br>Hours</div>
+              </div>
+              <div class="volunteer-stat-card">
+                <div class="number">⭐⭐</div>
+                <div class="label">星级志愿者<br>Star Volunteer</div>
+              </div>
+              <div class="volunteer-stat-card">
+                <div class="number">🏆</div>
+                <div class="label">校级优秀<br>Outstanding</div>
+              </div>
+            </div>
+
+            <div class="volunteer-detail">
+              <h4>🌟 服务经历</h4>
+              <p style="margin-bottom: 1rem;">
+                积极参与各类志愿服务活动，累计服务时长超过300小时，获得星级志愿者和校级优秀志愿者荣誉称号。
+              </p>
+
+              <h4>📚 主要参与项目</h4>
+              <ul>
+                <li><strong>寒假线上支教</strong>：连续2年参与，为偏远地区学生提供在线教育服务</li>
+                <li><strong>公益义卖</strong>：组织校园义卖活动，筹得善款用于公益事业</li>
+                <li><strong>地铁引导</strong>：在地铁站台提供乘客引导和咨询服务</li>
+                <li><strong>图书馆整理</strong>：参与图书馆书籍分类、上架和整理工作</li>
+                <li><strong>校运会</strong>：负责赛事服务、观众引导和秩序维护</li>
+                <li><strong>社区服务</strong>：参与社区清洁、老人关怀等活动</li>
+              </ul>
+
+              <h4 style="margin-top: 1.5rem;">📖 个人感悟</h4>
+              <p style="opacity: 0.85;">
+                志愿服务让我更加懂得感恩与奉献，每一次服务都是一次成长的机会。能够用自己的力量帮助他人，让我感到无比充实和快乐。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创业经历 -->
+  <section style="padding: 4rem 0; background: linear-gradient(135deg, rgba(143, 185, 168, 0.05) 0%, rgba(245, 226, 157, 0.05) 100%);">
+    <div style="max-width: 100%; margin: 0 auto; padding: 0 2rem;">
+      <div class="section-title scroll-animate">
+        <h2>创业经历 / Entrepreneurship</h2>
+        <p>创新实践 / Innovation Practice</p>
+      </div>
+
+      <div class="scroll-animate" style="animation-delay: 0.2s;">
+        <div class="card" style="max-width: 900px; margin: 0 auto; padding: 2.5rem;">
+          <!-- 头部信息 -->
+          <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap;">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; flex-shrink: 0;">
+              🚀
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+              <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-text);">教学设计创意工作室</h3>
+              <p style="color: var(--color-primary); font-weight: 600; margin-bottom: 0.3rem;">创始人 / Founder</p>
+              <p style="font-size: 0.95rem; opacity: 0.7;">2024年04月 - ~</p>
+            </div>
+          </div>
+
+          <!-- 核心职责 -->
+          <div style="margin-bottom: 2rem;">
+            <h4 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--color-primary); display: flex; align-items: center; gap: 0.5rem;">
+              <span style="width: 4px; height: 20px; background: var(--color-primary); border-radius: 2px;"></span>
+              核心职责 / Core Responsibilities
+            </h4>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem; padding-left: 1rem;">
+              <div style="display: flex; gap: 0.8rem;">
+                <span style="color: var(--color-primary); font-weight: 600;">•</span>
+                <p style="opacity: 0.9; line-height: 1.7;">全面负责工作室运营管理，通过小红书等社交媒体平台及淘宝、闲鱼等电商平台承接教学设计与教育内容创作业务</p>
+              </div>
+              <div style="display: flex; gap: 0.8rem;">
+                <span style="color: var(--color-primary); font-weight: 600;">•</span>
+                <p style="opacity: 0.9; line-height: 1.7;">独立创作原创教学设计、说课稿、逐字稿等教育文档，并根据实际工作痛点使用Coze搭建教学设计Agent，累计支撑完成各类教学文案接近80份</p>
+              </div>
+              <div style="display: flex; gap: 0.8rem;">
+                <span style="color: var(--color-primary); font-weight: 600;">•</span>
+                <p style="opacity: 0.9; line-height: 1.7;">运用万彩等工具制作教学短动画，使用即梦等AIGC工具设计课堂任务单、板书等教学素材，提升教学内容的可视化呈现效果</p>
+              </div>
+              <div style="display: flex; gap: 0.8rem;">
+                <span style="color: var(--color-primary); font-weight: 600;">•</span>
+                <p style="opacity: 0.9; line-height: 1.7;">建立客户需求沟通机制，从需求分析、方案设计到交付验收的全流程服务管理</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 业绩成果 -->
+          <div style="margin-bottom: 2rem;">
+            <h4 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--color-accent); display: flex; align-items: center; gap: 0.5rem;">
+              <span style="width: 4px; height: 20px; background: var(--color-accent); border-radius: 2px;"></span>
+              主要成果 / Key Achievements
+            </h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+              <div style="background: linear-gradient(135deg, rgba(143, 185, 168, 0.1), rgba(143, 185, 168, 0.05)); padding: 1.2rem; border-radius: 12px; text-align: center;">
+                <p style="font-size: 2rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.3rem;">80+</p>
+                <p style="font-size: 0.9rem; opacity: 0.8;">完成订单数量</p>
+              </div>
+              <div style="background: linear-gradient(135deg, rgba(242, 196, 206, 0.1), rgba(242, 196, 206, 0.05)); padding: 1.2rem; border-radius: 12px; text-align: center;">
+                <p style="font-size: 2rem; font-weight: 700; color: var(--color-secondary); margin-bottom: 0.3rem;">98%</p>
+                <p style="font-size: 0.9rem; opacity: 0.8;">客户满意度</p>
+              </div>
+              <div style="background: linear-gradient(135deg, rgba(245, 226, 157, 0.1), rgba(245, 226, 157, 0.05)); padding: 1.2rem; border-radius: 12px; text-align: center;">
+                <p style="font-size: 2rem; font-weight: 700; color: var(--color-accent); margin-bottom: 0.3rem;">35%</p>
+                <p style="font-size: 0.9rem; opacity: 0.8;">复购率</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 学习与成长 -->
+          <div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--color-secondary); display: flex; align-items: center; gap: 0.5rem;">
+              <span style="width: 4px; height: 20px; background: var(--color-secondary); border-radius: 2px;"></span>
+              关键学习与成长 / Key Learnings
+            </h4>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem; padding-left: 1rem;">
+              <div style="display: flex; gap: 0.8rem;">
+                <span style="color: var(--color-secondary); font-weight: 600;">•</span>
+                <p style="opacity: 0.9; line-height: 1.7;"><strong>商业思维培养：</strong>从零开始搭建业务体系，深入理解市场需求分析、定价策略、客户运营等商业核心要素</p>
+              </div>
+              <div style="display: flex; gap: 0.8rem;">
+                <span style="color: var(--color-secondary); font-weight: 600;">•</span>
+                <p style="opacity: 0.9; line-height: 1.7;"><strong>项目管理能力：</strong>同时管理多个项目进度，培养了高效的时间管理和任务优先级判断能力</p>
+              </div>
+              <div style="display: flex; gap: 0.8rem;">
+                <span style="color: var(--color-secondary); font-weight: 600;">•</span>
+                <p style="opacity: 0.9; line-height: 1.7;"><strong>内容创作技能：</strong>系统提升了文案撰写、视觉设计、视频制作等多元化内容生产能力</p>
+              </div>
+              <div style="display: flex; gap: 0.8rem;">
+                <span style="color: var(--color-secondary); font-weight: 600;">•</span>
+                <p style="opacity: 0.9; line-height: 1.7;"><strong>客户沟通技巧：</strong>积累了丰富的B端和C端客户服务经验，建立了以客户需求为导向的服务意识</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 英文简介 -->
+          <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(107, 93, 79, 0.1);">
+            <p style="opacity: 0.7; line-height: 1.8; font-size: 0.95rem;">
+              <em>Founded and operated an educational content creation studio,
+                 providing original teaching design, lesson presentation scripts, 
+                 verbatim scripts, and teaching animation production services.
+                  Successfully completed 80+ orders with 98% customer satisfaction, 
+                  developed comprehensive business management capabilities and content creation skills.</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/interactions.js"></script>
+  <script>
+    // 3D立方体轮播功能
+    const cubeContainer = document.getElementById('cube-container');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    if (cubeContainer && prevBtn && nextBtn) {
+      let currentRotation = 0;
+      
+      function rotateCube(direction) {
+        currentRotation += direction * 90;
+        cubeContainer.style.transform = `rotateY(${currentRotation}deg)`;
+      }
+      
+      prevBtn.addEventListener('click', () => {
+        rotateCube(-1);
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        rotateCube(1);
+      });
+      
+      // 自动轮播
+      setInterval(() => {
+        rotateCube(1);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

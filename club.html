@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古韵流光非遗社团 - 朱栎芝 | Intangible Cultural Heritage Club</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 页面专属配色 */
+    :root {
+      --club-bg: #FAF9F7;
+      --club-card: #FFFFFF;
+      --club-gray: #EAEAEA;
+      --club-wood: #C8B6A6;
+      --club-gold: #D4B979;
+      --club-text: #4A403A;
+      --club-text-light: #7A706A;
+    }
+
+    body {
+      background-color: var(--club-bg);
+      color: var(--club-text);
+    }
+
+    /* Hero区域 */
+    .club-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--club-bg) 0%, #F5F3F0 100%);
+      position: relative;
+    }
+
+    .club-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--club-wood), var(--club-gold), var(--club-wood));
+      z-index: 2;
+    }
+
+    .club-hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('img/club/huihui.jpg') center/cover no-repeat;
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    .club-hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--club-gold);
+      color: var(--club-card);
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      border: 2px solid var(--club-gold);
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--club-text);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-subtitle {
+      font-size: 1.6rem;
+      color: var(--club-text);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .hero-quote {
+      font-size: 1.3rem;
+      color: var(--club-wood);
+      font-style: italic;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      font-weight: 500;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--club-gold);
+      display: block;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: var(--club-text);
+      margin-top: 0.3rem;
+      font-weight: 500;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      color: var(--club-wood);
+      font-size: 1.5rem;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* 活动介绍区域 */
+    .activity-section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      color: var(--club-text);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header p {
+      color: var(--club-text-light);
+    }
+
+    /* 活动卡片 */
+    .activity-card {
+      background: var(--club-card);
+      border-radius: 20px;
+      padding: 3rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--club-gray);
+    }
+
+    .activity-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .activity-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--club-wood), var(--club-gold));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .activity-info h3 {
+      font-size: 1.8rem;
+      color: var(--club-text);
+      margin-bottom: 0.5rem;
+    }
+
+    .activity-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      color: var(--club-text-light);
+      font-size: 0.9rem;
+    }
+
+    .activity-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .activity-desc {
+      color: var(--club-text-light);
+      line-height: 1.9;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .activity-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .activity-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background: var(--club-gold);
+      color: var(--club-card);
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .activity-link:hover {
+      background: var(--club-wood);
+      transform: translateY(-2px);
+    }
+
+    .activity-link.secondary {
+      background: transparent;
+      color: var(--club-gold);
+      border: 2px solid var(--club-gold);
+    }
+
+    .activity-link.secondary:hover {
+      background: var(--club-gold);
+      color: var(--club-card);
+    }
+
+    /* 照片墙 - 不规则散落布局 */
+    .photo-wall-section {
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, var(--club-card) 0%, var(--club-bg) 100%);
+    }
+
+    .photo-wall-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .photo-wall {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-auto-rows: 200px;
+      gap: 1.5rem;
+      grid-auto-flow: dense;
+      padding: 2rem 0;
+    }
+
+    /* 不同尺寸的照片项 */
+    .photo-wall-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .photo-wall-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .photo-wall-item.small {
+      grid-row: span 1;
+      grid-column: span 1;
+    }
+
+    .photo-wall-item.medium {
+      grid-row: span 2;
+      grid-column: span 1;
+    }
+
+    .photo-wall-item.large {
+      grid-row: span 2;
+      grid-column: span 2;
+    }
+
+    .photo-wall-item.wide {
+      grid-row: span 1;
+      grid-column: span 2;
+    }
+
+    /* 普通照片 */
+    .photo-wall-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .photo-wall-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* 可翻转卡片 */
+    .flip-card {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .flip-card-front {
+      background: linear-gradient(135deg, var(--club-wood), var(--club-gold));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .flip-card-front h4 {
+      color: var(--club-card);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .flip-card-front p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+    }
+
+    .flip-hint {
+      position: absolute;
+      bottom: 1rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 照片占位符 */
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--club-gray), var(--club-bg));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--club-wood);
+      gap: 0.5rem;
+    }
+
+    .photo-placeholder .icon {
+      font-size: 2rem;
+    }
+
+    .photo-placeholder .text {
+      font-size: 0.9rem;
+    }
+
+    /* 社团工作亮点 */
+    .highlights-section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .highlight-card {
+      background: var(--club-card);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      border: 2px solid var(--club-gray);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .highlight-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .highlight-card:hover {
+      border-color: var(--club-gold);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .highlight-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--club-gold), var(--club-wood));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .highlight-card h3 {
+      font-size: 1.2rem;
+      color: var(--club-text);
+      margin-bottom: 1rem;
+    }
+
+    .highlight-card p {
+      color: var(--club-text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* 个人成长 */
+    .growth-section {
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, var(--club-card) 0%, var(--club-bg) 100%);
+    }
+
+    .growth-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .growth-content {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .growth-text {
+      text-align: left;
+    }
+
+    .growth-text p {
+      text-indent: 2em;
+    }
+
+    .growth-text {
+      color: var(--club-text-light);
+      line-height: 2;
+      font-size: 1.05rem;
+    }
+
+    .growth-text p {
+      margin-bottom: 1.5rem;
+    }
+
+    .growth-skills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .growth-skills {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .growth-skills {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .skill-item {
+      background: var(--club-card);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--club-gold);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .skill-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      border-left-width: 6px;
+      background: linear-gradient(135deg, var(--club-card) 0%, #FDFCFA 100%);
+    }
+
+    .skill-item h4 {
+      color: var(--club-text);
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .skill-item:hover h4 {
+      color: var(--club-gold);
+    }
+
+    .skill-item p {
+      color: var(--club-text-light);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* 底部导航 */
+    .page-footer {
+      background: var(--club-text);
+      color: var(--club-bg);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav a {
+      color: var(--club-bg);
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border: 1px solid var(--club-wood);
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .footer-nav a:hover {
+      background: var(--club-gold);
+      border-color: var(--club-gold);
+    }
+
+    /* 照片查看模态框 */
+    .photo-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 10000;
+      padding: 2rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .photo-modal.active {
+      display: flex;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: var(--club-gold);
+    }
+
+    .modal-image {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    /* 返回顶部按钮 */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--club-gold);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      font-size: 1.2rem;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(212, 185, 121, 0.4);
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .activity-card {
+        padding: 2rem;
+      }
+
+      .photo-wall {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .photo-wall-item.large,
+      .photo-wall-item.wide {
+        grid-column: span 2;
+      }
+
+      .growth-content {
+        gap: 2rem;
+      }
+
+      .highlights-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="club-page">
+  <!-- 自定义鼠标光标 -->
+  <div class="custom-cursor"></div>
+  <div class="cursor-glow"></div>
+
+  <!-- 导航栏 -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">朱栎芝</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">首页 / Home</a></li>
+        <li><a href="experience.html" class="nav-link">经历 / Experience</a></li>
+        <li><a href="projects.html" class="nav-link">项目 / Projects</a></li>
+        <li><a href="interests.html" class="nav-link">兴趣 / Interests</a></li>
+        <li><a href="contact.html" class="nav-link">联系 / Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero区域 -->
+  <section class="club-hero">
+    <div class="hero-badge">
+      <span>社长 / President</span>
+    </div>
+    <h1 class="hero-title">古韵流光非遗社团</h1>
+    <p class="hero-subtitle">Intangible Cultural Heritage Club</p>
+    <p class="hero-quote">"传承非遗文化，让传统技艺焕发新生"</p>
+    
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">5+</span>
+        <p class="stat-label">举办活动</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">200+</span>
+        <p class="stat-label">单次参与人数</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">2</span>
+        <p class="stat-label">传承项目</p>
+      </div>
+    </div>
+
+    <div class="scroll-hint">↓</div>
+  </section>
+
+  <!-- 扎染活动 -->
+  <section class="activity-section">
+    <div class="section-header scroll-animate">
+      <h2>扎染体验活动</h2>
+      <p>Tie-Dye Experience Activity</p>
+    </div>
+
+    <div class="activity-card scroll-animate">
+      <div class="activity-header">
+        <div class="activity-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/>
+            <path d="M12 6v12M6 12h12"/>
+          </svg>
+        </div>
+        <div class="activity-info">
+          <h3>与扎染"布"期而遇</h3>
+          <div class="activity-meta">
+            <span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              2024年5月30日
+            </span>
+            <span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              首义广场
+            </span>
+            <span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+              200+人参与
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <p class="activity-desc">
+        "巧手扎锦绣，靛蓝染春秋"。本次活动以扎染为主题，让同学们亲手体验这一古老而美丽的民间艺术。
+        活动伊始，由志愿者向参与者介绍扎染的特点、历史背景和艺术价值，解释其制作工艺和传统用途。
+        参与者通过知识问答和图片记忆小游戏后，在志愿者指导下亲手体验扎染，制作属于自己的独特作品。
+        活动现场氛围热烈，同学们在蓝白相间的图案中感受着民间艺术的魅力，让传统与生活共生共融。
+      </p>
+
+      <div class="activity-links">
+        <a href="https://mp.weixin.qq.com/s/YJpn0cyGMCBydpl6siUIKg" target="_blank" class="activity-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          查看活动推文
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 漂漆活动 -->
+  <section class="activity-section" style="background: linear-gradient(135deg, var(--club-bg) 0%, #F5F3F0 100%);">
+    <div class="section-header scroll-animate">
+      <h2>漂漆扇艺体验活动</h2>
+      <p>Lacquer Fan Art Experience</p>
+    </div>
+
+    <div class="activity-card scroll-animate">
+        <div class="activity-header">
+          <div class="activity-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="activity-info">
+            <h3>"漆"光异彩，"扇"耀未来</h3>
+            <div class="activity-meta">
+              <span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                2024年4月11日
+              </span>
+              <span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                首义校区首义广场
+              </span>
+              <span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                150+人参与
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <p class="activity-desc">
+          "一眼千年，非遗漆扇"。本次活动聚焦大漆工艺，让同学们近距离感受这项国家级非物质文化遗产的独特魅力。
+          活动志愿者带领参与者线上观赏各种大漆工艺作品，包括漆画、漆扇、漆珠等，详细介绍其中的工艺特点、设计风格及艺术价值。
+          参与者通过知识问答关卡后，在志愿者指导下体验大漆工艺，亲手制作漆扇、漆珠、书签等作品。
+          每一件成品都诠释着人们对非遗的热爱与执着，让参与者在春天的校园里感受浓厚的文化底蕴。
+        </p>
+
+        <div class="activity-links">
+          <a href="https://mp.weixin.qq.com/s/_IsxUuG-HD3bhkgP2boN6Q?scene=1&click_id=1" target="_blank" class="activity-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            查看活动推文
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 照片墙区域 -->
+  <section class="photo-wall-section" id="photo-wall">
+    <div class="photo-wall-container">
+      <div class="section-header scroll-animate">
+        <h2>活动剪影</h2>
+        <p>Activity Highlights</p>
+      </div>
+
+      <div class="photo-wall">
+        <!-- 扎染活动照片 -->
+        <div class="photo-wall-item medium" onclick="openModal('img/club/zr_1.jpg')">
+          <img src="img/club/pq_zuopin5.jpeg" alt="扎染活动" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'icon\'>ZR01</span><span class=\'text\'>扎染活动</span></div>'">
+        </div>
+
+        <div class="photo-wall-item small flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>剪纸教学</h4>
+            </div>
+            <div class="flip-card-back">
+              <img src="img/club/kezhi_laoshi.jpeg" alt="剪纸教学" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'icon\'>ZR02</span></div>'">
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-wall-item large" onclick="openModal('img/club/zr_zuopin3.jpg')">
+          <img src="img/club/pq_zuopin.jpg" alt="扎染作品" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'icon\'>ZR03</span><span class=\'text\'>扎染作品展示</span></div>'">
+        </div>
+
+        <div class="photo-wall-item wide flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>刻纸作品</h4>
+            </div>
+            <div class="flip-card-back">
+              <img src="img/club/kezhi_zuopin3.jpeg" alt="刻纸作品" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'icon\'>PQ01</span></div>'">
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-wall-item medium" onclick="openModal('img/club/pq_2.jpg')">
+          <img src="img/club/pq_zuopin5.jpg" alt="漂漆作品" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'icon\'>PQ02</span><span class=\'text\'>漂漆制作</span></div>'">
+        </div>
+
+        <div class="photo-wall-item small flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>漆扇成品</h4>
+            </div>
+            <div class="flip-card-back">
+              <img src="img/club/zr_zuopin.jpg" alt="扎染成品" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'icon\'>PQ03</span></div>'">
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-wall-item small" onclick="openModal('img/club/zr_zuopin.jpg')">
+          <img src="img/club/zr_zuopin.jpg" alt="漂漆体验" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'icon\'>PQ04</span><span class=\'text\'>活动现场</span></div>'">
+        </div>
+
+        <div class="photo-wall-item small" onclick="openModal('img/club/club_flower.jpg')">
+          <img src="img/club/club_flower.jpg" alt="鲜花" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'icon\'>ZR05</span><span class=\'text\'>活动合影</span></div>'">
+        </div>
+
+        <div class="photo-wall-item small flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>缠花制作</h4>
+            </div>
+            <div class="flip-card-back">
+              <img src="img/club/chanhua_zuopin.jpeg" alt="缠花制作" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'icon\'>PQ03</span></div>'">
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+  </section>
+
+  <!-- 社团工作亮点 -->
+  
+
+  <!-- 个人成长 -->
+  <section class="growth-section">
+    <div class="growth-container">
+      <div class="section-header scroll-animate">
+        <h2>个人成长与收获</h2>
+        <p>Personal Growth & Harvest</p>
+      </div>
+
+      <div class="growth-content">
+        <div class="growth-text scroll-animate">
+          <p>
+            作为社团的发起人，最初只是希望将接触到非遗文化时的心动和美好分享给更多同龄人,
+            到最后一步步把它从一个小众想法变成有温度、有规模的校园文化阵地，
+            这一路的点滴，成为我大学生活里最鲜活的印记。从起草社团章程
+            到一点点招募核心成员、敲定社团活动方向，再到策划非遗体验活动，每一步都亲力亲为。
+            越来越多的同学因为对非遗的
+            好奇加入进来，发展成从最初宿舍的4个人到拥有稳定成员和志愿者的社团，
+            亲手种下的种子终于慢慢开出花。每一次活动策划，我和团队都会反复打磨形式，
+            把枯燥的文化讲解变成沉浸式体验，盛情邀请同学们
+            身着传统服饰动手制作，还结合校园场景设计
+            创意主题，让非遗不再是博物馆里的展品，而是能握在手里、留在身边的美好。
+          </p>
+          <p>
+            为了让社团有更充足的资源支撑活动、扩大影响力，我主动承担起拉赞助的工作。
+            那段时间，我一次次梳理社团的活动价值和校园传播优势，对着不同的合作方打磨沟通方案，
+            从阐述社团能为合作带来的曝光与价值，再到敲定赞助形式、
+            对接落地细节，每一次沟通都充满挑战。
+            这份为社团争取资源的经历，也让我更深刻地体会到，一个组织的成长，从来不是孤军奋战，
+            而是需要凝聚各方的力量，才能走得更远。
+          </p>
+          <p>
+            这一年，我对负责人和领导力有了全新的理解：它从来不是站在高处指挥他人，
+            而是带着初心凝聚团队，看见每一位成员的闪光点，激发大家的潜能，和大家一起朝着同一个目标努力。
+            感谢每一位核心成员的并肩同行，感谢每一位志愿者的无私付出，更感谢每一位参与者的支持与热爱，
+            是你们的陪伴，让我最初的热爱能在校园里生根、发芽，绽放出独属于青春的光彩。而我也会带着这份热爱与勇气，让更多人看见非遗的美、爱上中华优秀传统文化。
+          </p>
+        </div>
+
+        <div class="growth-skills scroll-animate" style="animation-delay: 0.2s;">
+          <div class="skill-item">
+            <h4>活动策划能力</h4>
+            <p>从活动主题确定、流程设计到物料准备，全程参与策划多场大型非遗体验活动，锻炼全局规划能力。</p>
+          </div>
+          <div class="skill-item">
+            <h4>团队协作能力</h4>
+            <p>组织20+志愿者团队，明确分工协作，协调场地、物资、宣传等资源，确保活动顺利进行。</p>
+          </div>
+          <div class="skill-item">
+            <h4>现场落地执行</h4>
+            <p>活动现场统筹调度，处理突发情况，收集参与者反馈及加入意向，活动均获得参与者高度评价</p>
+          </div>
+          <div class="skill-item">
+            <h4>宣传推广能力</h4>
+            <p>撰写活动推文、制作宣传海报，通过学校社群、自媒体等渠道推广，进行活动预热及宣发。</p>
+          </div>
+          <div class="skill-item">
+            <h4>沟通协调能力</h4>
+            <p>与校内外多方资源对接，协调供应商、赞助商及学校部门，建立良好合作关系，保障活动资源。</p>
+          </div>
+          <div class="skill-item">
+            <h4>创新思维能力</h4>
+            <p>结合现代元素创新非遗活动形式，设计互动体验环节，让传统文化以更年轻的方式呈现。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部导航 -->
+  <footer class="page-footer">
+    <div class="footer-nav">
+      <a href="experience.html">← 返回经历总览</a>
+      <a href="assistant.html">查看辅导员助理工作 →</a>
+    </div>
+    <p style="opacity: 0.7; font-size: 0.9rem;">传承非遗文化，让传统技艺在新时代焕发新生</p>
+  </footer>
+
+  <!-- 返回顶部按钮 -->
+  <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
+  <!-- 照片查看模态框 -->
+  <div class="photo-modal" id="photoModal" onclick="closeModal(event)">
+    <button class="modal-close" onclick="closeModal(event)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <img class="modal-image" id="modalImage" src="" alt="活动照片">
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    // 滚动动画
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay * 1000);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.highlight-card, .scroll-animate').forEach(item => {
+      observer.observe(item);
+    });
+
+    // 返回顶部按钮
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 照片模态框
+    function openModal(src) {
+      const modal = document.getElementById('photoModal');
+      const modalImage = document.getElementById('modalImage');
+      modalImage.src = src;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(event) {
+      if (event.target.id === 'photoModal' || event.target.closest('.modal-close')) {
+        const modal = document.getElementById('photoModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // ESC键关闭模态框
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('photoModal');
+        if (modal.classList.contains('active')) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+
+  </script>
+  <script src="js/animations.js"></script>
+  <script src="js/interactions.js"></script>
+</body>
+</html>

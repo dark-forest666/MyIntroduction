@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新生辅导员助理 - 朱栎芝 | Freshman Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 页面专属配色 */
+    :root {
+      --assist-bg: #FAF9F7;
+      --assist-card: #FFFFFF;
+      --assist-gray: #EAEAEA;
+      --assist-wood: #C8B6A6;
+      --assist-wine: #8B0000;
+      --assist-text: #4A403A;
+      --assist-text-light: #7A706A;
+    }
+
+    body {
+      background-color: var(--assist-bg);
+      color: var(--assist-text);
+    }
+
+    /* Hero区域 */
+    .assistant-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--assist-bg) 0%, #F5F3F0 100%);
+      position: relative;
+    }
+
+    .assistant-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--assist-wood), var(--assist-wine), var(--assist-wood));
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(139, 0, 0, 0.1);
+      color: var(--assist-wine);
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--assist-text);
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: var(--assist-text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-quote {
+      font-size: 1.2rem;
+      color: var(--assist-wine);
+      font-style: italic;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--assist-wine);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--assist-text-light);
+      margin-top: 0.3rem;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      color: var(--assist-wood);
+      font-size: 1.5rem;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* 时间轴区域 */
+    .timeline-section {
+      padding: 4rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .timeline-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .timeline-title h2 {
+      font-size: 2rem;
+      color: var(--assist-text);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-title p {
+      color: var(--assist-text-light);
+    }
+
+    /* 时间轴容器 */
+    .timeline {
+      position: relative;
+      padding-left: 3rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--assist-wood) 0%, var(--assist-wine) 50%, var(--assist-wood) 100%);
+    }
+
+    /* 时间节点 */
+    .timeline-item {
+      position: relative;
+      margin-bottom: 4rem;
+      opacity: 1;
+      transform: translateX(0);
+      transition: all 0.6s ease;
+    }
+
+    .timeline-node {
+      position: absolute;
+      left: -3.4rem;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      background: var(--assist-wine);
+      border-radius: 50%;
+      border: 3px solid var(--assist-bg);
+      box-shadow: 0 0 0 2px var(--assist-wine);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover .timeline-node {
+      transform: scale(1.3);
+      box-shadow: 0 0 0 4px rgba(139, 0, 0, 0.2);
+    }
+
+    .timeline-date {
+      position: absolute;
+      left: -8rem;
+      top: -0.3rem;
+      font-size: 0.85rem;
+      color: var(--assist-text-light);
+      font-weight: 500;
+      text-align: right;
+      width: 4rem;
+    }
+
+    /* 内容卡片 */
+    .timeline-card {
+      background: var(--assist-card);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--assist-gray);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-card:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      border-color: var(--assist-wood);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--assist-wood), var(--assist-wine));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .card-title {
+      flex: 1;
+    }
+
+    .card-title h3 {
+      font-size: 1.3rem;
+      color: var(--assist-text);
+      margin-bottom: 0.3rem;
+    }
+
+    .card-title span {
+      font-size: 0.85rem;
+      color: var(--assist-text-light);
+    }
+
+    .card-content {
+      color: var(--assist-text-light);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    /* 照片预览区 */
+    .photo-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .photo-item {
+      aspect-ratio: 4/3;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--assist-gray);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .photo-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--assist-wood);
+      font-size: 1.5rem;
+    }
+
+    .view-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--assist-wine);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+    }
+
+    .view-more-btn:hover {
+      gap: 0.8rem;
+    }
+
+    /* 成长感悟区域 */
+    .reflection-section {
+      background: linear-gradient(135deg, var(--assist-card) 0%, var(--assist-bg) 100%);
+      padding: 5rem 2rem;
+      margin-top: 3rem;
+    }
+
+    .reflection-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .reflection-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .reflection-title h2 {
+      font-size: 2rem;
+      color: var(--assist-text);
+      margin-bottom: 0.5rem;
+    }
+
+    .reflection-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .reflection-card {
+      background: var(--assist-card);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 2px solid var(--assist-wood);
+      transition: all 0.3s ease;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reflection-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-color: var(--assist-wine);
+    }
+
+    .reflection-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .reflection-card h3 {
+      font-size: 1.2rem;
+      color: var(--assist-wine);
+      margin-bottom: 1rem;
+    }
+
+    .reflection-card p {
+      color: var(--assist-text-light);
+      line-height: 1.8;
+    }
+
+    /* 底部导航 */
+    .page-footer {
+      background: var(--assist-text);
+      color: var(--assist-bg);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav a {
+      color: var(--assist-bg);
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border: 1px solid var(--assist-wood);
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .footer-nav a:hover {
+      background: var(--assist-wine);
+      border-color: var(--assist-wine);
+    }
+
+    /* 照片墙模态框 */
+    .photo-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 10000;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+
+    .photo-modal.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .modal-close {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 10001;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: var(--assist-wine);
+    }
+
+    .modal-title {
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      margin-top: 3rem;
+    }
+
+    .modal-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .modal-gallery img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .modal-gallery img:hover {
+      transform: scale(1.02);
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-stats {
+        gap: 2rem;
+      }
+
+      .timeline {
+        padding-left: 2rem;
+      }
+
+      .timeline-date {
+        position: static;
+        text-align: left;
+        margin-bottom: 0.5rem;
+        width: auto;
+      }
+
+      .photo-preview {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reflection-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 返回顶部按钮 */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--assist-wine);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      font-size: 1.2rem;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(139, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body class="assistant-page">
+  <!-- 自定义鼠标光标 -->
+  <div class="custom-cursor"></div>
+  <div class="cursor-glow"></div>
+
+  <!-- 导航栏 -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">朱栎芝</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">首页 / Home</a></li>
+        <li><a href="experience.html" class="nav-link">经历 / Experience</a></li>
+        <li><a href="projects.html" class="nav-link">项目 / Projects</a></li>
+        <li><a href="interests.html" class="nav-link">兴趣 / Interests</a></li>
+        <li><a href="contact.html" class="nav-link">联系 / Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero区域 -->
+  <section class="assistant-hero">
+    <div class="hero-badge">
+      <span>🎓</span>
+      <span>2025级新生辅导员助理</span>
+    </div>
+    <h1 class="hero-title">新生辅导员助理</h1>
+    <p class="hero-subtitle">Freshman Assistant</p>
+    <p class="hero-quote">"陪伴80+新生，开启大学新篇章"</p>
+    
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">70+</span>
+        <p class="stat-label">管理新生</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">1</span>
+        <p class="stat-label">工作年数</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">6+</span>
+        <p class="stat-label">组织活动</p>
+      </div>
+    </div>
+
+    <div class="scroll-hint">↓</div>
+  </section>
+
+  <!-- 时间轴区域 -->
+  <section class="timeline-section">
+    <div class="timeline-title scroll-animate">
+      <h2>工作历程 / Journey</h2>
+      <p>陪伴成长的每一个瞬间</p>
+    </div>
+
+    <div class="timeline">
+      <!-- 迎接新生 -->
+      <div class="timeline-item" data-delay="0">
+        <div class="timeline-node"></div>
+        <div class="timeline-date">2025.09</div>
+        <div class="timeline-card">
+          <div class="card-header">
+            <div class="card-icon">🎉</div>
+            <div class="card-title">
+              <h3>迎接新生</h3>
+              <span>Welcome New Students</span>
+            </div>
+          </div>
+          <p class="card-content">
+            参与2025级新生迎新工作，协助新生完成报到流程，帮助搬运行李，引导入住宿舍。
+            在炎热的夏日里，用热情和耐心迎接每一位新同学，让他们感受到学校的温暖。
+          </p>
+          <div class="photo-preview">
+            <div class="photo-item">
+              <img src="img/club/stu_yingxin.jpg" alt="迎接新生" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+            <div class="photo-item">
+              <img src="img/club/stu_yingxin2.jpg" alt="报到现场" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+            <div class="photo-item">
+              <img src="img/club/stu_yingxin3.jpg" alt="宿舍走访" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- 新生班会 -->
+      <div class="timeline-item" data-delay="0.1">
+        <div class="timeline-node"></div>
+        <div class="timeline-date">2025.09</div>
+        <div class="timeline-card">
+          <div class="card-header">
+            <div class="card-icon">📋</div>
+            <div class="card-title">
+              <h3>新生班会</h3>
+              <span>Class Meeting</span>
+            </div>
+          </div>
+          <p class="card-content">
+            协助组织新生第一次班会，帮助同学们相互认识，介绍学校规章制度，
+            解答新生关于学习和生活的各种疑问，建立班级凝聚力。
+          </p>
+          <div class="photo-preview">
+            <div class="photo-item">
+              <img src="img/club/stu_banhui.jpg" alt="班会现场" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+            <div class="photo-item">
+              <img src="img/club/stu_banhui5.jpeg" alt="自我介绍" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+            <div class="photo-item">
+              <img src="img/club/stu_hezhao.jpg" alt="班级合影" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- 资料归档 -->
+      <div class="timeline-item" data-delay="0.2">
+        <div class="timeline-node"></div>
+        <div class="timeline-date">2025.9</div>
+        <div class="timeline-card">
+          <div class="card-header">
+            <div class="card-icon">📁</div>
+            <div class="card-title">
+              <h3>资料收集归档</h3>
+              <span>Document Management</span>
+            </div>
+          </div>
+          <p class="card-content">
+            完成新生纸质档案的收集、核验与分类归档，搭建并维护学生档案电子台账，
+            优化档案管理流程，保障学生信息的准确性、安全性与可追溯性，提升学生管理工作运转效率，
+            为学院学生工作提质增效提供支撑
+          </p>
+        </div>
+      </div>
+
+      <!-- 新生军训 -->
+      <div class="timeline-item" data-delay="0.5">
+        <div class="timeline-node"></div>
+        <div class="timeline-date">2025.09</div>
+        <div class="timeline-card">
+          <div class="card-header">
+            <div class="card-icon">🎖️</div>
+            <div class="card-title">
+              <h3>新生军训</h3>
+              <span>Military Training</span>
+            </div>
+          </div>
+          <p class="card-content">
+            全程陪伴新生完成军训任务，协助教官管理班级，关注同学身体状况，
+            组织休息时的文娱活动，用相机记录下同学们坚毅与青春的美好瞬间。
+          </p>
+          <div class="photo-preview">
+            <div class="photo-item">
+              <img src="img/club/stu_junxun.jpg" alt="军训开营" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+            <div class="photo-item">
+              <img src="img/club/stu_junxun2.jpg" alt="训练场景" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+            <div class="photo-item">
+              <img src="img/club/stu_junxun3.jpg" alt="休息时光" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 新生晚会 -->
+      <div class="timeline-item" data-delay="0.4">
+        <div class="timeline-node"></div>
+        <div class="timeline-date">2025.10</div>
+        <div class="timeline-card">
+          <div class="card-header">
+            <div class="card-icon">🎭</div>
+            <div class="card-title">
+              <h3>新生晚会</h3>
+              <span>Freshman Party</span>
+            </div>
+          </div>
+          <p class="card-content">
+            协助策划和组织新生晚会，从节目筛选、彩排到现场执行全程参与。
+            为新生提供展示才艺的舞台，增进同学间的友谊，营造温馨的班级氛围。
+          </p>
+          <div class="photo-preview">
+            <div class="photo-item">
+              <img src="img/club/stu_wanhui.jpg" alt="晚会现场" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+            <div class="photo-item">
+              <img src="img/club/stu_wanhui2.jpg" alt="节目表演" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+            <div class="photo-item">
+              <img src="img/club/stu_wanhui3.jpg" alt="互动环节" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- 入党志愿谈话 -->
+      <div class="timeline-item" data-delay="0.3">
+        <div class="timeline-node"></div>
+        <div class="timeline-date">2025.11</div>
+        <div class="timeline-card">
+          <div class="card-header">
+            <div class="card-icon">💬</div>
+            <div class="card-title">
+              <h3>入党志愿谈话</h3>
+              <span>Party Membership Talk</span>
+            </div>
+          </div>
+          <p class="card-content">
+            承担入党申请学生的谈话组织与记录工作，围绕入党动机、思想认识、
+            日常表现等核心维度开展深度沟通，形成规范谈话档案，同步做好思想引导与跟踪培养，
+            协助党组织完成党员发展全流程的政治把关，保障党员发展质量。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      
+
+
+  <!-- 成长感悟 -->
+  <section class="reflection-section">
+    <div class="reflection-container">
+      <div class="reflection-title scroll-animate">
+        <h2>💭 这段经历带给我的</h2>
+        <p>成长与收获 / Growth & Harvest</p>
+      </div>
+      
+      <div class="reflection-cards">
+        <div class="reflection-card scroll-animate" style="animation-delay: 0.1s;">
+          <div class="reflection-icon">🎯</div>
+          <h3>责任与担当</h3>
+          <p>管理近80名新生让我深刻理解了责任的重量。从迎新到军训，从日常管理到活动组织，每一个细节都需要用心对待。这段经历培养了我强烈的责任意识和服务意识。</p>
+        </div>
+        
+        <div class="reflection-card scroll-animate" style="animation-delay: 0.2s;">
+          <div class="reflection-icon">🤝</div>
+          <h3>沟通与协调</h3>
+          <p>面对不同性格、不同背景的同学，我学会了如何有效沟通。协调各方资源、处理突发情况、平衡不同需求，这些经历极大地提升了我的沟通协调能力。</p>
+        </div>
+        
+        <div class="reflection-card scroll-animate" style="animation-delay: 0.3s;">
+          <div class="reflection-icon">🌱</div>
+          <h3>自我成长</h3>
+          <p>在帮助他人的过程中，我也收获了成长。从最初的手忙脚乱到后来的从容应对，从被动执行到主动思考，这段经历让我变得更加成熟和自信。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部导航 -->
+  <footer class="page-footer">
+    <div class="footer-nav">
+      <a href="experience.html">← 返回经历总览</a>
+      <a href="club.html">查看社团活动 →</a>
+    </div>
+    <p style="opacity: 0.5; font-size: 0.5rem;">陪伴是最长情的告白，成长是最美好的礼物</p>
+  </footer>
+
+  <!-- 返回顶部按钮 -->
+  <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+
+  <script src="js/main.js"></script>
+  <script>
+    // 返回顶部按钮显示/隐藏
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      });
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 照片墙模态框
+    const photoData = {
+      welcome: {
+        title: '迎接新生',
+        photos: [
+          { src: 'img/club/stu_welcome_1.jpg', alt: '迎接新生' },
+          { src: 'img/club/stu_welcome_2.jpg', alt: '报到现场' },
+          { src: 'img/club/stu_welcome_3.jpg', alt: '宿舍走访' },
+          { src: 'img/club/stu_welcome_4.jpg', alt: '合影' }
+        ]
+      },
+      meeting: {
+        title: '新生班会',
+        photos: [
+          { src: 'img/club/stu_meeting_1.jpg', alt: '班会现场' },
+          { src: 'img/club/stu_meeting_2.jpg', alt: '自我介绍' },
+          { src: 'img/club/stu_meeting_3.jpg', alt: '班级合影' }
+        ]
+      },
+      archive: {
+        title: '资料归档',
+        photos: [
+          { src: 'img/club/stu_archive_1.jpg', alt: '资料整理' },
+          { src: 'img/club/stu_archive_2.jpg', alt: '档案归类' },
+          { src: 'img/club/stu_archive_3.jpg', alt: '工作场景' }
+        ]
+      },
+      talk: {
+        title: '入党谈话',
+        photos: [
+          { src: 'img/club/stu_talk_1.jpg', alt: '谈话现场' },
+          { src: 'img/club/stu_talk_2.jpg', alt: '思想交流' },
+          { src: 'img/club/stu_talk_3.jpg', alt: '记录整理' }
+        ]
+      },
+      party: {
+        title: '新生晚会',
+        photos: [
+          { src: 'img/club/stu_party_1.jpg', alt: '晚会现场' },
+          { src: 'img/club/stu_party_2.jpg', alt: '节目表演' },
+          { src: 'img/club/stu_party_3.jpg', alt: '互动环节' },
+          { src: 'img/club/stu_party_4.jpg', alt: '合影' }
+        ]
+      },
+      training: {
+        title: '新生军训',
+        photos: [
+          { src: 'img/club/stu_training_1.jpg', alt: '军训开营' },
+          { src: 'img/club/stu_training_2.jpg', alt: '训练场景' },
+          { src: 'img/club/stu_training_3.jpg', alt: '休息时光' },
+          { src: 'img/club/stu_training_4.jpg', alt: '军训结业' }
+        ]
+      }
+    };
+
+    function openPhotoModal(type, title) {
+      const modal = document.getElementById('photoModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalGallery = document.getElementById('modalGallery');
+      
+      const data = photoData[type];
+      modalTitle.textContent = data.title;
+      
+      modalGallery.innerHTML = data.photos.map(photo => `
+        <img src="${photo.src}" alt="${photo.alt}" onerror="this.style.display='none'">
+      `).join('');
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePhotoModal() {
+      const modal = document.getElementById('photoModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // ESC键关闭模态框
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closePhotoModal();
+      }
+    });
+
+    // 点击模态框背景关闭
+    document.getElementById('photoModal').addEventListener('click', (e) => {
+      if (e.target.id === 'photoModal') {
+        closePhotoModal();
+      }
+    });
+  </script>
+  <script src="js/animations.js"></script>
+  <script src="js/interactions.js"></script>
+</body>
+</html>

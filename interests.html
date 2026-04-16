@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>兴趣 - 朱栎芝 | Interests</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- 自定义鼠标光标 -->
+  <div class="custom-cursor"></div>
+  <div class="cursor-glow"></div>
+
+  <!-- 导航栏 -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">朱栎芝</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">首页 / Home</a></li>
+        <li><a href="experience.html" class="nav-link">经历 / Experience</a></li>
+        <li><a href="projects.html" class="nav-link">项目 / Projects</a></li>
+        <li><a href="interests.html" class="nav-link active">兴趣 / Interests</a></li>
+        <li><a href="contact.html" class="nav-link">联系 / Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- 页面内容开始 -->
+  <div style="padding-top: 5rem;"></div>
+
+  <!-- 兴趣特长 -->
+  <section style="padding: 3rem 0;">
+    <div class="container">
+      <div class="section-title scroll-animate">
+        <h2>兴趣特长 / Hobbies & Talents</h2>
+        <p>我的爱好 / My Hobbies</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        
+        <!-- 兴趣1 - 阅读 -->
+        <div class="card card-hover scroll-animate" style="animation-delay: 0.2s; text-align: center; display: flex; flex-direction: column;">
+          <div style="font-size: 4rem; margin-bottom: 1rem;">📚</div>
+          <h3>阅读 / Reading</h3>
+          <p style="opacity: 0.8; margin-top: 0.8rem; line-height: 1.8;text-align:left; flex: 1;">
+            始终保持阅读习惯，近期正在读《被讨厌的勇气》，前不久刚读完《长安的荔枝》，推荐马伯庸老师的《食难之徒》。<br>
+          </p>
+          <button class="interest-explore-btn" style="margin-top: 1.5rem;">
+            <span class="btn-text-normal">探索 →</span>
+            <span class="btn-text-hover">Go →</span>
+          </button>
+        </div>
+
+        <!-- 兴趣2 - 摄影 -->
+        <div class="card card-hover scroll-animate" style="animation-delay: 0.3s; text-align: center; display: flex; flex-direction: column;">
+          <div style="font-size: 4rem; margin-bottom: 1rem;">📸</div>
+          <h3>摄影 / Photography</h3>
+          <p style="opacity: 0.8; margin-top: 0.8rem; line-height: 1.8;text-align:left; flex: 1;">
+            用镜头捕捉日常里的细碎光影与温柔瞬间，在取景框中定格生活的诗意，让每一张照片都成为时光的注脚。<br>
+          </p>
+          <button class="interest-explore-btn" data-interest="photography" style="margin-top: 1.5rem;">
+            <span class="btn-text-normal">探索 →</span>
+            <span class="btn-text-hover">Go →</span>
+          </button>
+        </div>
+
+        <!-- 兴趣3 - 做手工 -->
+        <div class="card card-hover scroll-animate" style="animation-delay: 0.4s; text-align: center; display: flex; flex-direction: column;">
+          <div style="font-size: 4rem; margin-bottom: 1rem;">✂️</div>
+          <h3>做手工 / Handcraft</h3>
+          <p style="opacity: 0.8; margin-top: 0.8rem; line-height: 1.8;text-align:left; flex: 1;">
+            热爱编织、粘土等手作创作，享受在独处时光里沉浸于手作的心流过程，收获内心的平静与治愈。<br>
+          </p>
+          <button class="interest-explore-btn" style="margin-top: 1.5rem;">
+            <span class="btn-text-normal">探索 →</span>
+            <span class="btn-text-hover">Go →</span>
+          </button>
+        </div>
+
+        <!-- 兴趣4 - 运动 -->
+        <div class="card card-hover scroll-animate" style="animation-delay: 0.5s; text-align: center; display: flex; flex-direction: column;">
+          <div style="font-size: 4rem; margin-bottom: 1rem;">🏃</div>
+          <h3>运动 / Sports</h3>
+          <p style="opacity: 0.8; margin-top: 0.8rem; line-height: 1.8;text-align:left; flex: 1;">
+            主要是网球与羽毛球两项运动，享受在球场上挥拍奔跑的畅快，以饱满的状态迎接学习与生活的各项挑战。蹲一个球搭子~<br>
+          </p>
+          <button class="interest-explore-btn" style="margin-top: 1.5rem;">
+            <span class="btn-text-normal">探索 →</span>
+            <span class="btn-text-hover">Go →</span>
+          </button>
+        </div>
+
+        <!-- 兴趣5 - 旅行 -->
+        <div class="card card-hover scroll-animate" style="animation-delay: 0.6s; text-align: center; display: flex; flex-direction: column;">
+          <div style="font-size: 4rem; margin-bottom: 1rem;">✨</div>
+          <h3>旅行 / Travel</h3>
+          <p style="opacity: 0.8; margin-top: 0.8rem;line-height: 1.8;text-align:left; flex: 1;">
+            钟情于citywalk，用脚步丈量不同城市的肌理，大学期间已走过 8 个省份、近 20 座城市，在街巷漫游中感受风土人情。
+          </p>
+          <button class="interest-explore-btn" data-interest="travel" style="margin-top: 1.5rem;">
+            <span class="btn-text-normal">探索 →</span>
+            <span class="btn-text-hover">Go →</span>
+          </button>
+        </div>
+
+        <!-- 兴趣6 - 美食 -->
+        <div class="card card-hover scroll-animate" style="animation-delay: 0.6s; text-align: center; display: flex; flex-direction: column;">
+          <div style="font-size: 4rem; margin-bottom: 1rem;">🍔</div>
+          <h3>美食 / Food</h3>
+          <p style="opacity: 0.8; margin-top: 0.8rem;line-height: 1.8;text-align:left; flex: 1;">
+            妥妥的美食探索家，主打一个 "万物皆可尝"，用味蕾解锁不同城市的风味密码，在吃吃喝喝里收获满满的幸福感。
+          </p>
+          <button class="interest-explore-btn" data-interest="food" style="margin-top: 1.5rem;">
+            <span class="btn-text-normal">探索 →</span>
+            <span class="btn-text-hover">Go →</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 游戏体验 -->
+  <section style="padding: 4rem 0; background: var(--color-white);">
+    <div class="container">
+      <div class="section-title scroll-animate">
+        <h2>游戏体验 / Game Experience</h2>
+        <p>游戏与乐趣 / Games & Fun</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+        
+        <!-- 游戏1 -->
+        <div class="card card-hover scroll-animate" style="animation-delay: 0.2s;">
+          <div style="display: flex; gap: 1.5rem;">
+            <div style="width: 100px; height: 100px; border-radius: 15px; overflow: hidden; flex-shrink: 0;">
+              <img src="img/yanyun.png" alt="燕云十六声" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="flex: 1;">
+              <h3 style="margin-bottom: 0.5rem;">燕云十六声</h3>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                <span style="background: var(--color-secondary); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">RPG</span>
+                <span style="background: var(--color-accent); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">开放世界武侠</span>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; opacity: 0.75; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.05);">
+            <span>⭐ <b>玩法拆解：</b>区别于传统 MMO 的职业绑定，玩家可自由搭配门派招式，
+              支持生活玩家通过采集、制造、跑商养成
+              大世界并非空壳，包含动态江湖事件、NPC 交互等
+              ，还融合飞花令、叶子戏等中华传统文化。
+            </span>
+            <span>💖 <b>运营思考：</b>针对开放世界武侠 RPG
+               的长线运营，核心是平衡玩家体验、IP 价值与商业化。版本更新以季度大更+月度小更为核心，
+              保持大世界的探索新鲜感；针对不同类型用户有针对性的设计内容。
+              </span>
+          </div>
+        </div>
+
+        <!-- 游戏2 -->
+        <div class="card card-hover scroll-animate" style="animation-delay: 0.4s;">
+          <div style="display: flex; gap: 1.5rem;">
+            <div style="width: 100px; height: 100px; border-radius: 15px; overflow: hidden; flex-shrink: 0;">
+              <img src="img/myWorld.png" alt="我的世界" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="flex: 1;">
+              <h3 style="margin-bottom: 0.5rem;">我的世界</h3>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                <span style="background: var(--color-primary); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">沙盒创造</span>
+                <span style="background: var(--color-secondary); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">生存建造</span>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; opacity: 0.75; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.05);">
+            <span>⭐ <b>玩法拆解：</b>游戏无固定目标，玩家可自主选择玩法路径
+              方块是游戏的底层逻辑，玩家可自由破坏、放置方块，改造世界，是创造玩法的基础，高阶玩法
+              支持可编程电路与第三方开发，满足不同层次的玩家需求。
+            </span>
+            <span>💖 <b>运营思考：</b>玩家即内容，运营的本质是维护 UGC 生态、赋能创作者，
+            鼓励优质内容产出，提供流量扶持、收益分成；可针对不同地域玩家推出本土化活动</span>
+          </div>
+        </div>
+
+        <!-- 游戏3 - 森林冰火人 -->
+        <div class="card card-hover scroll-animate" style="animation-delay: 0.6s;">
+          <div style="display: flex; gap: 1.5rem;">
+            <div style="width: 100px; height: 100px; border-radius: 15px; overflow: hidden; flex-shrink: 0;">
+              <img src="img/forestGame.webp" alt="森林冰火人" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="flex: 1;">
+              <h3 style="margin-bottom: 0.5rem;">森林冰火人</h3>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                <span style="background: var(--color-primary); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">益智解谜</span>
+                <span style="background: var(--color-secondary); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">双人合作</span>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; opacity: 0.75; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.05);">
+            <span>⭐ <b>核心拆解：</b>核心是1+1>2的协作操作极简、单关时长短、无养成、无付费，
+              完美适配碎片化时间，适合全年龄段玩家。每个关卡都有不同的机关谜题，
+              考验玩家的逻辑思维、反应能力、协作能力</span>
+            <span>💖 <b>用户洞察：</b>双人协作的趣味性
+              适合短视频平台的病毒式传播，自带话题属性例如：童年情怀营销、亲子教育，吸引泛用户；持续更新关卡，
+              强化社交属性，让玩家愿意反复游玩、分享给朋友。</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* 探索按钮样式 */
+    .interest-explore-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1.5rem;
+      background: transparent;
+      border: 2px solid var(--color-primary);
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      cursor: none;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      font-family: 'Inter', 'Microsoft YaHei', sans-serif;
+      width: fit-content;
+      align-self: center;
+      perspective: 1000px;
+    }
+
+    .interest-explore-btn:hover {
+      border-color: var(--color-secondary);
+    }
+
+    .interest-explore-btn .btn-text-normal,
+    .interest-explore-btn .btn-text-hover {
+      display: block;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      backface-visibility: hidden;
+    }
+
+    .interest-explore-btn .btn-text-normal {
+      color: var(--color-primary);
+    }
+
+    .interest-explore-btn .btn-text-hover {
+      position: absolute;
+      color: var(--color-secondary);
+      transform: rotateX(180deg);
+      opacity: 0;
+    }
+
+    .interest-explore-btn:hover .btn-text-normal {
+      transform: rotateX(180deg);
+      opacity: 0;
+    }
+
+    .interest-explore-btn:hover .btn-text-hover {
+      transform: rotateX(0deg);
+      opacity: 1;
+    }
+
+    /* 照片墙模态框 */
+    .photo-wall-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 9999;
+      display: none;
+      overflow-y: auto;
+      cursor: auto;
+    }
+
+    .photo-wall-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .photo-wall-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .photo-wall-title {
+      font-size: 1.8rem;
+      color: var(--color-white);
+      font-weight: 600;
+    }
+
+    .photo-wall-close {
+      background: none;
+      border: none;
+      font-size: 2.5rem;
+      color: var(--color-white);
+      cursor: none;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+
+    .photo-wall-close:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* 照片墙网格布局 */
+    .photo-wall-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 150px;
+      gap: 1rem;
+      grid-auto-flow: dense;
+    }
+
+    .photo-wall-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .photo-wall-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .photo-wall-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 不同尺寸的照片 */
+    .photo-wall-item.size-1x1 {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+
+    .photo-wall-item.size-1x2 {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+
+    .photo-wall-item.size-2x1 {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+
+    .photo-wall-item.size-2x2 {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    /* 图片查看器 */
+    .photo-viewer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.98);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: auto;
+    }
+
+    .photo-viewer-content {
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .photo-viewer-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .photo-viewer-title {
+      margin-top: 1.5rem;
+      color: var(--color-white);
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .photo-viewer-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 2rem;
+      color: var(--color-white);
+      cursor: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+
+    .photo-viewer-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .photo-wall-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 120px;
+        gap: 0.8rem;
+      }
+
+      .photo-wall-container {
+        padding: 1rem;
+      }
+
+      .photo-wall-title {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* 建设中模态框 */
+    .construction-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      z-index: 10000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .construction-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .construction-content {
+      background: linear-gradient(135deg, #FAF9F7 0%, #FFFFFF 100%);
+      padding: 3rem 4rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+      position: relative;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .construction-modal.active .construction-content {
+      transform: scale(1);
+    }
+
+    .construction-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      font-size: 1.5rem;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .construction-close:hover {
+      background: rgba(0, 0, 0, 0.2);
+      transform: rotate(90deg);
+    }
+
+    .construction-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: bounce 1s ease infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .construction-title {
+      font-size: 1.8rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .construction-text {
+      font-size: 1.2rem;
+      color: var(--color-secondary);
+      margin-bottom: 0.3rem;
+    }
+
+    .construction-subtext {
+      font-size: 0.9rem;
+      color: #999;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .construction-content {
+        padding: 2rem 2.5rem;
+      }
+
+      .construction-title {
+        font-size: 1.5rem;
+      }
+
+      .construction-icon {
+        font-size: 3rem;
+      }
+    }
+  </style>
+
+  <!-- 照片墙模态框 -->
+  <div id="photo-wall-modal" class="photo-wall-modal">
+    <div class="photo-wall-container">
+      <div class="photo-wall-header">
+        <h3 class="photo-wall-title" id="photo-wall-title">摄影作品</h3>
+        <button class="photo-wall-close" id="photo-wall-close">×</button>
+      </div>
+      <div class="photo-wall-grid" id="photo-wall-grid">
+        <!-- 照片动态插入这里 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 图片查看器 -->
+  <div id="photo-viewer" class="photo-viewer">
+    <button class="photo-viewer-close" id="photo-viewer-close">×</button>
+    <div class="photo-viewer-content">
+      <img id="viewer-image" src="" alt="">
+      <p class="photo-viewer-title" id="viewer-title"></p>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/interactions.js"></script>
+
+  <script>
+    /**
+     * PhotoWall 类 - 可复用的照片墙组件
+     * @param {Object} config - 配置对象
+     * @param {string} config.triggerSelector - 触发按钮选择器
+     * @param {string} config.title - 照片墙标题
+     * @param {Array} config.images - 图片数组 [{src, title, size}]
+     * @param {string} config.sizePattern - 尺寸模式 'default' | 'random'
+     */
+    class PhotoWall {
+      constructor(config) {
+        this.config = {
+          triggerSelector: config.triggerSelector,
+          title: config.title || '照片墙',
+          images: config.images || [],
+          sizePattern: config.sizePattern || 'default'
+        };
+        
+        this.modal = document.getElementById('photo-wall-modal');
+        this.grid = document.getElementById('photo-wall-grid');
+        this.titleEl = document.getElementById('photo-wall-title');
+        this.closeBtn = document.getElementById('photo-wall-close');
+        this.viewer = document.getElementById('photo-viewer');
+        this.viewerImg = document.getElementById('viewer-image');
+        this.viewerTitle = document.getElementById('viewer-title');
+
+        this.init();
+      }
+
+      init() {
+        // 绑定触发按钮
+        const triggerBtn = document.querySelector(this.config.triggerSelector);
+        if (triggerBtn) {
+          triggerBtn.addEventListener('click', () => this.open());
+        }
+
+        // 绑定关闭按钮
+        this.closeBtn.addEventListener('click', () => this.close());
+
+        // 点击模态框背景关闭
+        this.modal.addEventListener('click', (e) => {
+          if (e.target === this.modal) {
+            this.close();
+          }
+        });
+
+        // ESC键关闭
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            this.close();
+            this.closeViewer();
+          }
+        });
+
+        // 图片查看器关闭
+        document.getElementById('photo-viewer-close').addEventListener('click', () => {
+          this.closeViewer();
+        });
+
+        this.viewer.addEventListener('click', (e) => {
+          if (e.target === this.viewer) {
+            this.closeViewer();
+          }
+        });
+      }
+
+      open() {
+        this.titleEl.textContent = this.config.title;
+        this.renderPhotos();
+        this.modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // 添加淡入动画
+        setTimeout(() => {
+          this.modal.style.opacity = '1';
+        }, 10);
+      }
+
+      close() {
+        this.modal.style.opacity = '0';
+        setTimeout(() => {
+          this.modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }, 300);
+      }
+
+      renderPhotos() {
+        this.grid.innerHTML = '';
+        
+        this.config.images.forEach((image, index) => {
+          const item = document.createElement('div');
+          item.className = `photo-wall-item ${image.size || 'size-1x1'}`;
+          
+          const img = document.createElement('img');
+          img.src = image.src;
+          img.alt = image.title || '';
+          img.loading = 'lazy';
+          
+          item.appendChild(img);
+          
+          // 点击打开图片查看器
+          item.addEventListener('click', () => {
+            this.openViewer(image);
+          });
+          
+          this.grid.appendChild(item);
+        });
+      }
+
+      openViewer(image) {
+        this.viewerImg.src = image.src;
+        this.viewerTitle.textContent = image.title || '';
+        this.viewer.style.display = 'flex';
+      }
+
+      closeViewer() {
+        this.viewer.style.display = 'none';
+        this.viewerImg.src = '';
+      }
+    }
+
+    // 摄影照片墙
+    const photographyPhotoWall = new PhotoWall({
+      triggerSelector: '[data-interest="photography"]',
+      title: '摄影作品',
+      images: [
+        { src: 'img/travel/DSC_0931.jpg', title: '风景1', size: 'size-2x2' },
+        { src: 'img/travel/DSC_0932.jpg', title: '风景2', size: 'size-1x1' },
+        { src: 'img/travel/DSC_0933.jpg', title: '风景3', size: 'size-1x1' },
+        { src: 'img/travel/DSC_0934.jpg', title: '风景4', size: 'size-1x2' },
+        { src: 'img/travel/DSC_0935.jpg', title: '风景5', size: 'size-2x1' },
+        { src: 'img/travel/DSC_0936.jpg', title: '风景6', size: 'size-1x1' },
+        { src: 'img/travel/DSC_0937.jpg', title: '风景7', size: 'size-1x1' },
+        { src: 'img/travel/DSC_0938.jpg', title: '风景8', size: 'size-2x2' }
+      ]
+    });
+
+    // 美食照片墙
+    const foodPhotoWall = new PhotoWall({
+      triggerSelector: '[data-interest="food"]',
+      title: '美食探索',
+      images: [
+        { src: 'img/food/food1.jpg', title: '美食1', size: 'size-2x2' },
+        { src: 'img/food/food2.jpg', title: '美食2', size: 'size-1x1' },
+        { src: 'img/food/food3.jpg', title: '美食3', size: 'size-1x2' },
+        { src: 'img/food/food4.jpg', title: '美食4', size: 'size-2x1' },
+        { src: 'img/food/food5.jpg', title: '美食5', size: 'size-1x1' },
+        { src: 'img/food/food6.jpg', title: '美食6', size: 'size-1x1' },
+        { src: 'img/food/food7.jpg', title: '美食7', size: 'size-2x2' },
+        { src: 'img/food/food8.jpg', title: '美食8', size: 'size-1x2' }
+      ]
+    });
+
+    // 旅行照片墙
+    const travelPhotoWall = new PhotoWall({
+      triggerSelector: '[data-interest="travel"]',
+      title: '旅行足迹',
+      images: [
+        { src: 'img/travel/travel1.jpg', title: '旅行1', size: 'size-2x2' },
+        { src: 'img/travel/travel2.jpg', title: '旅行2', size: 'size-1x1' },
+        { src: 'img/travel/travel3.jpg', title: '旅行3', size: 'size-1x2' },
+        { src: 'img/travel/travel4.jpg', title: '旅行4', size: 'size-2x1' },
+        { src: 'img/travel/travel5.jpg', title: '旅行5', size: 'size-1x1' },
+        { src: 'img/travel/travel6.jpg', title: '旅行6', size: 'size-1x1' },
+        { src: 'img/travel/travel7.jpg', title: '旅行7', size: 'size-2x2' },
+        { src: 'img/travel/travel8.jpg', title: '旅行8', size: 'size-1x2' }
+      ]
+    });
+
+    // 建设中模态框
+    function showConstructionModal() {
+      // 创建模态框
+      const modal = document.createElement('div');
+      modal.className = 'construction-modal';
+      modal.innerHTML = `
+        <div class="construction-content">
+          <button class="construction-close">×</button>
+          <div class="construction-icon">🏗</div>
+          <h3 class="construction-title">正在建设中</h3>
+          <p class="construction-text">敬请期待！</p>
+          <p class="construction-subtext">Coming Soon...</p>
+        </div>
+      `;
+      
+      document.body.appendChild(modal);
+      
+      // 显示模态框
+      setTimeout(() => {
+        modal.classList.add('active');
+      }, 10);
+      
+      // 关闭功能
+      const closeModal = () => {
+        modal.classList.remove('active');
+        setTimeout(() => {
+          document.body.removeChild(modal);
+        }, 300);
+      };
+      
+      modal.querySelector('.construction-close').addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    // 为没有data-interest的按钮添加建设中提示
+    document.querySelectorAll('.interest-explore-btn:not([data-interest])').forEach(btn => {
+      btn.addEventListener('click', showConstructionModal);
+    });
+  </script>
+
+</body>
+</html>
